@@ -642,7 +642,7 @@ class SymbolTable:
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
                         str_oper2_key)
 
-            # operator is >=
+            # operator is <=
             elif self.cuadruplo[quad][0] == 11:
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
@@ -659,6 +659,24 @@ class SymbolTable:
                     str_oper2_key = oper2_key[0]
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) <= int(
                         str_oper2_key)
+
+            # operator is %
+            elif self.cuadruplo[quad][0] == 3:
+                constant_key = [key for key, value in self.constantes.items() if key == oper2]
+                oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
+                oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
+                str_oper1_key = oper1_key[0]
+
+                if constant_key:
+                    str_constant_key = constant_key[0]
+                    self.temporals.append(
+                        int(self.symbols[str_oper1_key]["valor"]) % int(self.constantes[str_constant_key]["id"]))
+
+
+                elif oper2_key:
+                    str_oper2_key = oper2_key[0]
+                    self.temporals.append(
+                        int(self.symbols[str_oper1_key]["valor"]) % int(self.symbols[str_oper2_key]["valor"]))
 
             elif self.cuadruplo[quad][0] == "print":
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
@@ -687,7 +705,7 @@ class SymbolTable:
                 quad = self.cuadruplo[quad][3]
                 continue
 
-
+            print("LENNN: ", len(self.cuadruplo))
             quad += 1
                 
         
