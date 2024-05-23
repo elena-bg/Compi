@@ -344,6 +344,7 @@ class SymbolTable:
         end = self.saltos.pop()
         quad = list(self.cuadruplo[end])
         quad[3] = len(self.cuadruplo)
+        self.cuadruplo[end] = tuple(quad)
         #self.fill(end + 1 , self.cont -1)
         #self.fill(end , self.cont)
     
@@ -490,6 +491,7 @@ class SymbolTable:
             print("VIRTUAL MACHINEEEE: ", oper1)
             print("Constants: ", self.constantes)
             print("QUADSSSSS: ", self.cuadruplo)
+            print("rolis: ", quad)
             oper2 = self.cuadruplo[quad][2]
             result = self.cuadruplo[quad][3]
 
@@ -695,6 +697,7 @@ class SymbolTable:
 
             elif self.cuadruplo[quad][0] == "GotoF":
                 result_key = "tb" + str(self.cuadruplo[quad-1][3])
+                print("ROLIS2: ", result_key)
                 resultado = self.symbols[result_key]["valor"]
                 if type(resultado) == bool:
                     if resultado == False:
@@ -702,7 +705,9 @@ class SymbolTable:
                         continue
 
             elif self.cuadruplo[quad][0] == "Goto":
+                print("Rolis Quad: ", quad)
                 quad = self.cuadruplo[quad][3]
+                print("ROLIS3: ", quad)
                 continue
 
             print("LENNN: ", len(self.cuadruplo))

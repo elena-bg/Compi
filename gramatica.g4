@@ -42,7 +42,7 @@ term: factor {symbol_table.push_multi()}
 factor: ('+'| '-')? (Id {symbol_table.push_factor($Id.text, None, False)} 
        | CTE_INT {symbol_table.push_factor($CTE_INT.text, 'int', True)} 
        | CTE_FLOAT {symbol_table.push_factor($CTE_FLOAT.text, 'float', True)} 
-       | '(' expression ')');
+       | '(' {symbol_table.push_parentesis('(')} expression ')'{symbol_table.pop_parentesis()});
 
 
 // Definición de estructuras de control y asignación
