@@ -1,0 +1,10 @@
+self.gint = 1000
+self.gfl = 2000
+self.lint = 3000
+self.lfl = 4000
+self.tint = 5000
+self.tflo = 6000
+self.tbool = 7000
+self.ctint = 8000
+self.ctfl = 9000
+self.ctstr = 10000
