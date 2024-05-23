@@ -50,13 +50,9 @@ body: '{' statement* '}';
 assign: Id '='  expression {symbol_table.assign($Id.text, '=')} ';';
 initialization: assign;
 condition: if '('  expression ')' {symbol_table.ifSt()} body (else {symbol_table.elseSt()} body)? {symbol_table.endIf()};
-cycle: while {symbol_table.whileSt()} '(' expression ')' {symbol_table.whileIf()} body {symbol_table.end_while()};
+cycle: while {symbol_table.whileSt()} '(' expression ')' {symbol_table.ifSt()} body {symbol_table.end_while()};
 forSt: for '(' assign ';' expression {symbol_table.ifSt()}';' assign ')' body;
-print : (write | writeln) '(' (expression {symbol_table.print_function()} 
-    | CTE_STRING {symbol_table.push_factor($CTE_STRING.text, 'string', True)}) 
-    (',' (expression {symbol_table.print_function()} 
-    | CTE_STRING {symbol_table.push_factor($CTE_STRING.text, 'string', True)}))* ')' ';' 
-    {symbol_table.print_function()};
+print : (write | writeln) '(' (expression {symbol_table.print_function()} | CTE_STRING {symbol_table.push_factor($CTE_STRING.text, "string", True); symbol_table.print_function()}) (',' (expression | CTE_STRING))* ')' ';';
 functionCall: Id '(' (expression (',' expression)*)? ')' ';';
 type: int | float;
 

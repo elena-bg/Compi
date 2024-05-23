@@ -5,8 +5,12 @@ program main {
     while (n >= 1) {
         x = (x * n);
         n = n - 1;
+        writeln(n);
         if ((x % 2) == 0) {
             writeln("es par");
+        }
+        else {
+            writeln("Es impar");
         }
     }
 }

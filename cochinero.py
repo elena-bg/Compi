@@ -46,8 +46,9 @@ class SymbolTable:
             if val == value:
                 return key
         return None
-        """
-    def print_function(self):
+
+    """
+        def print_function(self):
         if len(self.operando) > 0:
             value = self.operando.pop()
             if value in self.constantes:
@@ -60,11 +61,12 @@ class SymbolTable:
                         break
         else:
             print("Error: No hay valor para imprimir")
-                 """
+    """
+
         
+
     def print_function(self):
         self.operador.append('print')
-        print(self.operador)
         exists = any(item.get('memoria') == self.operando[-1] for item in self.symbols.values())
 
         if exists:
@@ -86,11 +88,12 @@ class SymbolTable:
                 self.cuadruplo.append(quad)
                 self.cont += 1
                 self.tipos.pop()
-                #print("QUADS Print function: ", self.cuadruplo)
+                print("QUADS Print function: ", self.cuadruplo)
             else:
                 print("Does not exist \n")
                
-        
+    
+
     def push_sumas(self):
         if len(self.operador) > 0:
             if self.operador[-1] == 1  or self.operador[-1] == 2:
@@ -178,7 +181,7 @@ class SymbolTable:
                         self.tflo += 1
                     elif typo == "bool": 
                         resultado = self.tbool
-                        self.add_temporal('tbool', 'bool', 0, resultado)
+                        self.add_temporal('tb', 'bool', 0, resultado)
                         self.tbool += 1
                 quad = (operator, left_op, right_op, resultado)
                 self.cuadruplo.append(quad)
@@ -193,9 +196,7 @@ class SymbolTable:
     def pop_parentesis(self):
         self.operador.pop()
 
-                
-                    
-                    
+
     def push_operador(self, op):
         self.operador.append(self.op_dict[op])
     
@@ -333,16 +334,17 @@ class SymbolTable:
         else:
             result = self.operando.pop()
             quad = ("GotoF", result, None, None)
-            self.saltos.append(self.cont - 1)
+            #self.saltos.append(self.cont - 1)
             self.cuadruplo.append(quad)
-            for i in range (len(self.cuadruplo)): 
-                print(i, self.cuadruplo[i], "\n")
+            self.saltos.append(len(self.cuadruplo) - 1)
             self.cont += 1
     
     def endIf(self):
         # Paso 2: Finalización de la condición
         end = self.saltos.pop()
-        self.fill(end + 1 , self.cont -1)
+        quad = list(self.cuadruplo[end])
+        quad[3] = len(self.cuadruplo)
+        #self.fill(end + 1 , self.cont -1)
         #self.fill(end , self.cont)
     
         
@@ -353,29 +355,35 @@ class SymbolTable:
         self.cont += 1
         # Guardar el índice del cuádruplo Goto
         false_jump = self.saltos.pop()
-        self.saltos.append(self.cont - 1)
+        quad = list(self.cuadruplo[false_jump])
+        quad[3] = len(self.cuadruplo)
+
+        self.cuadruplo[false_jump] = tuple(quad)
+        self.saltos.append(len(self.cuadruplo) - 1)
+        #self.saltos.append(self.cont - 1)
         # Completar el cuádruplo GotoF del if statement
-        self.fill(false_jump + 1, self.cont)
+        #self.fill(false_jump + 1, self.cont)
         
     def whileSt(self):
         print("-----------INICIA WHILE----------")
         # Paso 1: Guardar el inicio del bucle
-        self.saltos.append(self.cont)
+        self.saltos.append(len(self.cuadruplo) - 1)
         
     def whileIf(self):
         print(f"------------------evalua cond------------ \n",  self.tipos)
         # Paso 1: Evaluación de la condición
-        exp_type = self.tipos.pop()
-        if exp_type != "bool":
-            raise ValueError("No es un bool")
-        else:
-            result = self.operando.pop()
-            quad = ("GotoF", result, None, None)
-            self.saltos.append(self.cont - 1)
-            self.cuadruplo.append(quad)
-            for i in range (len(self.cuadruplo)): 
-                print(i, self.cuadruplo[i], "\n")
-            self.cont += 1
+        self.saltos.append(len(self.cuadruplo) - 1)
+        #exp_type = self.tipos.pop()
+        #if exp_type != "bool":
+            #raise ValueError("No es un bool")
+        #else:
+            #result = self.operando.pop()
+            #quad = ("GotoF", result, None, None)
+            #self.saltos.append(self.cont - 1)
+            #self.cuadruplo.append(quad)
+            #for i in range (len(self.cuadruplo)):
+                #print(i, self.cuadruplo[i], "\n")
+            #self.cont += 1
     
     def end_while(self):
         # Paso 3: Finalización del bucle
@@ -384,9 +392,12 @@ class SymbolTable:
         quad = ("Goto", None, None, return_to)
         self.cuadruplo.append(quad)
         self.cont += 1 
-        self.fill(end + 1, self.cont - 1) #maybe end +1
-        for i in range (len(self.cuadruplo)): 
-            print(i, self.cuadruplo[i], "\n")
+        quad = list(self.cuadruplo[end])
+        quad[3] = len(self.cuadruplo)
+        self.cuadruplo[end] = tuple(quad)
+        #self.fill(end + 1, self.cont - 1) #maybe end +1
+        #for i in range (len(self.cuadruplo)):
+            #print(i, self.cuadruplo[i], "\n")
         
     
     
@@ -412,6 +423,7 @@ class SymbolTable:
             self.saltos.append(self.cont - 1)
     
     def for_increment(self, var, oper=None, expr=None):
+        quad = 0
         if oper == "++":
             quad = ("+", var, "1", var)
             self.cuadruplo.append(quad)
@@ -472,11 +484,12 @@ class SymbolTable:
 
     def maquina(self): 
         quad = 0
-
+        print("DELUSSION: ", len(self.cuadruplo))
         while quad < len(self.cuadruplo):
             oper1 = self.cuadruplo[quad][1]
-            #print("VIRTUAL MACHINEEEE: ", oper1)
-            #print("Constants: ", self.constants)
+            print("VIRTUAL MACHINEEEE: ", oper1)
+            print("Constants: ", self.constantes)
+            print("QUADSSSSS: ", self.cuadruplo)
             oper2 = self.cuadruplo[quad][2]
             result = self.cuadruplo[quad][3]
 
@@ -487,9 +500,9 @@ class SymbolTable:
             #operador =
             if self.cuadruplo[quad][0] == 15:
                 constant_key = [key for key, value in self.constantes.items() if key == oper1]
-                print("ck", constant_key)
+                print("ck: ", constant_key)
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
-                print(oper2_key)
+                print("mq: ", oper2_key)
                 if constant_key:
                     symbol_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
                     str_symbol_key = symbol_key[0]
@@ -610,6 +623,43 @@ class SymbolTable:
 
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) > int(str_oper2_key)
 
+            # operator is >=
+            elif self.cuadruplo[quad][0] == 12:
+                constant_key = [key for key, value in self.constantes.items() if key == oper2]
+                oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
+                oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
+                str_oper1_key = oper1_key[0]
+                result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
+                str_result_key = result_key[0]
+
+                if constant_key:
+                    str_constant_key = constant_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
+                        self.constantes[str_constant_key]["id"])
+
+                elif oper2_key:
+                    str_oper2_key = oper2_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
+                        str_oper2_key)
+
+            # operator is >=
+            elif self.cuadruplo[quad][0] == 11:
+                constant_key = [key for key, value in self.constantes.items() if key == oper2]
+                oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
+                oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
+                str_oper1_key = oper1_key[0]
+                result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
+                str_result_key = result_key[0]
+                if constant_key:
+                    str_constant_key = constant_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) <= int(
+                        self.constantes[str_constant_key]["id"])
+
+                elif oper2_key:
+                    str_oper2_key = oper2_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) <= int(
+                        str_oper2_key)
+
             elif self.cuadruplo[quad][0] == "print":
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
                 constant_key = [key for key, value in self.constantes.items() if key == result]
@@ -625,7 +675,7 @@ class SymbolTable:
                 print("VALOR FINAL: ", result)
 
 
-            elif self.cuadruplo[quad][0] == "GOTOF":
+            elif self.cuadruplo[quad][0] == "GotoF":
                 result_key = "tb" + str(self.cuadruplo[quad-1][3])
                 resultado = self.symbols[result_key]["valor"]
                 if type(resultado) == bool:
@@ -633,7 +683,7 @@ class SymbolTable:
                         quad = self.cuadruplo[quad][3]
                         continue
 
-            elif self.cuadruplo[quad][0] == "GOTO":
+            elif self.cuadruplo[quad][0] == "Goto":
                 quad = self.cuadruplo[quad][3]
                 continue
 
