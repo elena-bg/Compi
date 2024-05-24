@@ -1,0 +1,22 @@
+program main{
+	int i,n,x,j,m;
+
+	writeln("prueba while");
+	n = 5;
+	x = 1;
+	j = 3;
+
+	while (n >= 1){
+		m = 5;
+		while (m > 0) {
+			x = m + n;
+			writeln(x);
+			m = m - 1;
+		}
+		n = n - 1;
+	}
+
+    writeln("testing Rolis");
+	writeln(x);
+
+}

@@ -337,7 +337,7 @@ class SymbolTable:
             #self.saltos.append(self.cont - 1)
             self.cuadruplo.append(quad)
             self.saltos.append(len(self.cuadruplo) - 1)
-            self.cont += 1
+            #self.cont += 1
     
     def endIf(self):
         # Paso 2: Finalización de la condición
@@ -353,7 +353,7 @@ class SymbolTable:
         # Generar cuádruplo Goto para saltar al final del else
         quad = ("Goto", None, None, None)
         self.cuadruplo.append(quad)
-        self.cont += 1
+        #self.cont += 1
         # Guardar el índice del cuádruplo Goto
         false_jump = self.saltos.pop()
         quad = list(self.cuadruplo[false_jump])
@@ -389,10 +389,10 @@ class SymbolTable:
     def end_while(self):
         # Paso 3: Finalización del bucle
         end = self.saltos.pop()
-        return_to = self.saltos.pop()
+        return_to = self.saltos.pop() + 1
         quad = ("Goto", None, None, return_to)
         self.cuadruplo.append(quad)
-        self.cont += 1 
+        #self.cont += 1
         quad = list(self.cuadruplo[end])
         quad[3] = len(self.cuadruplo)
         self.cuadruplo[end] = tuple(quad)
@@ -683,6 +683,8 @@ class SymbolTable:
             elif self.cuadruplo[quad][0] == "print":
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
                 constant_key = [key for key, value in self.constantes.items() if key == result]
+
+
                 if result_key:
                     str_result_key = result_key[0]
                     result = self.symbols[str_result_key]["valor"]
