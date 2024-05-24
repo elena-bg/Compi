@@ -684,7 +684,6 @@ class SymbolTable:
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
                 constant_key = [key for key, value in self.constantes.items() if key == result]
 
-
                 if result_key:
                     str_result_key = result_key[0]
                     result = self.symbols[str_result_key]["valor"]
