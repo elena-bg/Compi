@@ -8,7 +8,7 @@ from gramaticaParser import gramaticaParser
 def main():
     symbol_table = SymbolTable()
 
-    input_stream = FileStream("if.txt")
+    input_stream = FileStream("newExample.txt")
     lexer = gramaticaLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = gramaticaParser(stream)

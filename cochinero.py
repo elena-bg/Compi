@@ -639,11 +639,15 @@ class SymbolTable:
 
                 if constant_key:
                     str_constant_key = constant_key[0]
+                    print("op 1: ", self.symbols[str_oper1_key]["valor"])
+                    print("op 2: ", self.constantes[str_constant_key]["id"])
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
                         self.constantes[str_constant_key]["id"])
 
                 elif oper2_key:
                     str_oper2_key = oper2_key[0]
+                    print("op 1: ", self.symbols[str_oper1_key]["valor"])
+                    print("op 2: ", self.symbols[str_oper2_key]["valor"])
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
                         self.symbols[str_oper2_key]["valor"])
 
@@ -696,7 +700,7 @@ class SymbolTable:
                     result = self.constantes[str_constant_key]["id"]
 
 
-                print("VALOR FINAL: ", result)
+                print(result) #VALOR FINAL
 
 
             elif self.cuadruplo[quad][0] == "GotoF":
@@ -714,7 +718,7 @@ class SymbolTable:
                 print("ROLIS3: ", quad)
                 continue
 
-            print("LENNN: ", len(self.cuadruplo))
+            #print("LENNN: ", len(self.cuadruplo))
             quad += 1
                 
         

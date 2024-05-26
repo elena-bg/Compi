@@ -1,21 +1,20 @@
 program main{
-	int i,n,x;
-	float a;
-	a = 4.5f;
-	
-	writeln("factorial for");
-	
-	x=1;
-	n=5;	
-	
-	for (i=1;i<n;i++){
+
+	int i,n,x,j,m;
+		
+	writeln("prueba for");		
+	n=5;
+	j = 0;
+	x = 1;
+	for (i=1;i<n;i+1){
 		x = x * i;
+		writeln(x);
+		for(j=1;j<n;j+1){
+			m = i + j;
+			writeln(i);
+			writeln(j);
+			writeln(m);
+		}
 	}
-	
-	for (i = 1; i<n; i++){
-		writeln(a*i);
-	}
-	
-	writeln(x);
 	
 }
