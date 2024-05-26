@@ -16,7 +16,7 @@ vacia = []
 
 def serializedATN():
     return [
-        4,1,33,333,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,33,334,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,
         7,20,2,21,7,21,2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,
@@ -34,26 +34,26 @@ def serializedATN():
         1,19,1,19,1,20,1,20,1,20,1,20,1,20,1,20,1,21,1,21,1,22,1,22,1,22,
         1,22,1,22,1,22,1,22,1,22,1,22,1,22,3,22,210,8,22,1,22,1,22,1,23,
         1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,23,1,24,1,24,1,24,1,24,1,24,
-        1,24,1,24,1,24,1,24,1,24,1,24,1,25,1,25,3,25,236,8,25,1,25,1,25,
-        1,25,1,25,1,25,1,25,3,25,244,8,25,1,25,1,25,1,25,3,25,249,8,25,5,
-        25,251,8,25,10,25,12,25,254,9,25,1,25,1,25,1,25,1,26,1,26,1,26,1,
-        26,1,26,5,26,264,8,26,10,26,12,26,267,9,26,3,26,269,8,26,1,26,1,
-        26,1,26,1,27,1,27,3,27,276,8,27,1,28,1,28,1,28,1,28,1,28,1,28,1,
-        28,1,28,1,28,1,28,1,28,1,28,1,28,1,29,1,29,1,29,1,29,1,29,1,29,3,
-        29,297,8,29,1,30,5,30,300,8,30,10,30,12,30,303,9,30,1,31,1,31,1,
-        31,1,31,1,31,1,32,1,32,1,32,1,33,1,33,5,33,315,8,33,10,33,12,33,
-        318,9,33,1,34,1,34,1,34,5,34,323,8,34,10,34,12,34,326,9,34,1,35,
-        1,35,1,35,1,35,1,35,1,35,0,0,36,0,2,4,6,8,10,12,14,16,18,20,22,24,
-        26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,
-        70,0,1,1,0,17,18,325,0,72,1,0,0,0,2,92,1,0,0,0,4,94,1,0,0,0,6,96,
-        1,0,0,0,8,98,1,0,0,0,10,100,1,0,0,0,12,102,1,0,0,0,14,104,1,0,0,
-        0,16,106,1,0,0,0,18,108,1,0,0,0,20,110,1,0,0,0,22,112,1,0,0,0,24,
-        114,1,0,0,0,26,116,1,0,0,0,28,118,1,0,0,0,30,120,1,0,0,0,32,131,
+        1,24,1,24,1,24,1,24,1,24,1,24,1,24,1,25,1,25,3,25,237,8,25,1,25,
+        1,25,1,25,1,25,1,25,1,25,3,25,245,8,25,1,25,1,25,1,25,3,25,250,8,
+        25,5,25,252,8,25,10,25,12,25,255,9,25,1,25,1,25,1,25,1,26,1,26,1,
+        26,1,26,1,26,5,26,265,8,26,10,26,12,26,268,9,26,3,26,270,8,26,1,
+        26,1,26,1,26,1,27,1,27,3,27,277,8,27,1,28,1,28,1,28,1,28,1,28,1,
+        28,1,28,1,28,1,28,1,28,1,28,1,28,1,28,1,29,1,29,1,29,1,29,1,29,1,
+        29,3,29,298,8,29,1,30,5,30,301,8,30,10,30,12,30,304,9,30,1,31,1,
+        31,1,31,1,31,1,31,1,32,1,32,1,32,1,33,1,33,5,33,316,8,33,10,33,12,
+        33,319,9,33,1,34,1,34,1,34,5,34,324,8,34,10,34,12,34,327,9,34,1,
+        35,1,35,1,35,1,35,1,35,1,35,0,0,36,0,2,4,6,8,10,12,14,16,18,20,22,
+        24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,
+        68,70,0,1,1,0,17,18,326,0,72,1,0,0,0,2,92,1,0,0,0,4,94,1,0,0,0,6,
+        96,1,0,0,0,8,98,1,0,0,0,10,100,1,0,0,0,12,102,1,0,0,0,14,104,1,0,
+        0,0,16,106,1,0,0,0,18,108,1,0,0,0,20,110,1,0,0,0,22,112,1,0,0,0,
+        24,114,1,0,0,0,26,116,1,0,0,0,28,118,1,0,0,0,30,120,1,0,0,0,32,131,
         1,0,0,0,34,147,1,0,0,0,36,166,1,0,0,0,38,182,1,0,0,0,40,191,1,0,
         0,0,42,197,1,0,0,0,44,199,1,0,0,0,46,213,1,0,0,0,48,222,1,0,0,0,
-        50,235,1,0,0,0,52,258,1,0,0,0,54,275,1,0,0,0,56,277,1,0,0,0,58,296,
-        1,0,0,0,60,301,1,0,0,0,62,304,1,0,0,0,64,309,1,0,0,0,66,316,1,0,
-        0,0,68,319,1,0,0,0,70,327,1,0,0,0,72,73,3,2,1,0,73,74,3,6,3,0,74,
+        50,236,1,0,0,0,52,259,1,0,0,0,54,276,1,0,0,0,56,278,1,0,0,0,58,297,
+        1,0,0,0,60,302,1,0,0,0,62,305,1,0,0,0,64,310,1,0,0,0,66,317,1,0,
+        0,0,68,320,1,0,0,0,70,328,1,0,0,0,72,73,3,2,1,0,73,74,3,6,3,0,74,
         75,5,1,0,0,75,79,3,60,30,0,76,78,3,56,28,0,77,76,1,0,0,0,78,81,1,
         0,0,0,79,77,1,0,0,0,79,80,1,0,0,0,80,85,1,0,0,0,81,79,1,0,0,0,82,
         84,3,58,29,0,83,82,1,0,0,0,84,87,1,0,0,0,85,83,1,0,0,0,85,86,1,0,
@@ -95,39 +95,39 @@ def serializedATN():
         11,0,214,215,6,23,-1,0,215,216,5,22,0,0,216,217,3,30,15,0,217,218,
         5,23,0,0,218,219,6,23,-1,0,219,220,3,38,19,0,220,221,6,23,-1,0,221,
         47,1,0,0,0,222,223,3,26,13,0,223,224,5,22,0,0,224,225,3,40,20,0,
-        225,226,5,25,0,0,226,227,3,30,15,0,227,228,6,24,-1,0,228,229,5,25,
-        0,0,229,230,3,40,20,0,230,231,5,23,0,0,231,232,3,38,19,0,232,49,
-        1,0,0,0,233,236,3,28,14,0,234,236,3,4,2,0,235,233,1,0,0,0,235,234,
-        1,0,0,0,236,237,1,0,0,0,237,243,5,22,0,0,238,239,3,30,15,0,239,240,
-        6,25,-1,0,240,244,1,0,0,0,241,242,5,29,0,0,242,244,6,25,-1,0,243,
-        238,1,0,0,0,243,241,1,0,0,0,244,252,1,0,0,0,245,248,5,26,0,0,246,
-        249,3,30,15,0,247,249,5,29,0,0,248,246,1,0,0,0,248,247,1,0,0,0,249,
-        251,1,0,0,0,250,245,1,0,0,0,251,254,1,0,0,0,252,250,1,0,0,0,252,
-        253,1,0,0,0,253,255,1,0,0,0,254,252,1,0,0,0,255,256,5,23,0,0,256,
-        257,5,25,0,0,257,51,1,0,0,0,258,259,5,28,0,0,259,268,5,22,0,0,260,
-        265,3,30,15,0,261,262,5,26,0,0,262,264,3,30,15,0,263,261,1,0,0,0,
-        264,267,1,0,0,0,265,263,1,0,0,0,265,266,1,0,0,0,266,269,1,0,0,0,
-        267,265,1,0,0,0,268,260,1,0,0,0,268,269,1,0,0,0,269,270,1,0,0,0,
-        270,271,5,23,0,0,271,272,5,25,0,0,272,53,1,0,0,0,273,276,3,14,7,
-        0,274,276,3,16,8,0,275,273,1,0,0,0,275,274,1,0,0,0,276,55,1,0,0,
-        0,277,278,3,12,6,0,278,279,5,28,0,0,279,280,5,22,0,0,280,281,3,68,
-        34,0,281,282,5,23,0,0,282,283,5,1,0,0,283,284,3,60,30,0,284,285,
-        3,38,19,0,285,286,5,2,0,0,286,287,5,25,0,0,287,288,6,28,-1,0,288,
-        289,6,28,-1,0,289,57,1,0,0,0,290,297,3,40,20,0,291,297,3,48,24,0,
-        292,297,3,44,22,0,293,297,3,46,23,0,294,297,3,50,25,0,295,297,3,
-        52,26,0,296,290,1,0,0,0,296,291,1,0,0,0,296,292,1,0,0,0,296,293,
-        1,0,0,0,296,294,1,0,0,0,296,295,1,0,0,0,297,59,1,0,0,0,298,300,3,
-        62,31,0,299,298,1,0,0,0,300,303,1,0,0,0,301,299,1,0,0,0,301,302,
-        1,0,0,0,302,61,1,0,0,0,303,301,1,0,0,0,304,305,3,54,27,0,305,306,
-        3,64,32,0,306,307,5,25,0,0,307,308,6,31,-1,0,308,63,1,0,0,0,309,
-        310,5,28,0,0,310,311,3,66,33,0,311,65,1,0,0,0,312,313,5,26,0,0,313,
-        315,3,64,32,0,314,312,1,0,0,0,315,318,1,0,0,0,316,314,1,0,0,0,316,
-        317,1,0,0,0,317,67,1,0,0,0,318,316,1,0,0,0,319,324,3,70,35,0,320,
-        321,5,26,0,0,321,323,3,70,35,0,322,320,1,0,0,0,323,326,1,0,0,0,324,
-        322,1,0,0,0,324,325,1,0,0,0,325,69,1,0,0,0,326,324,1,0,0,0,327,328,
-        5,28,0,0,328,329,5,27,0,0,329,330,3,54,27,0,330,331,6,35,-1,0,331,
-        71,1,0,0,0,22,79,85,128,137,144,155,162,166,180,186,209,235,243,
-        248,252,265,268,275,296,301,316,324
+        225,226,6,24,-1,0,226,227,3,30,15,0,227,228,6,24,-1,0,228,229,5,
+        25,0,0,229,230,3,40,20,0,230,231,5,23,0,0,231,232,3,38,19,0,232,
+        233,6,24,-1,0,233,49,1,0,0,0,234,237,3,28,14,0,235,237,3,4,2,0,236,
+        234,1,0,0,0,236,235,1,0,0,0,237,238,1,0,0,0,238,244,5,22,0,0,239,
+        240,3,30,15,0,240,241,6,25,-1,0,241,245,1,0,0,0,242,243,5,29,0,0,
+        243,245,6,25,-1,0,244,239,1,0,0,0,244,242,1,0,0,0,245,253,1,0,0,
+        0,246,249,5,26,0,0,247,250,3,30,15,0,248,250,5,29,0,0,249,247,1,
+        0,0,0,249,248,1,0,0,0,250,252,1,0,0,0,251,246,1,0,0,0,252,255,1,
+        0,0,0,253,251,1,0,0,0,253,254,1,0,0,0,254,256,1,0,0,0,255,253,1,
+        0,0,0,256,257,5,23,0,0,257,258,5,25,0,0,258,51,1,0,0,0,259,260,5,
+        28,0,0,260,269,5,22,0,0,261,266,3,30,15,0,262,263,5,26,0,0,263,265,
+        3,30,15,0,264,262,1,0,0,0,265,268,1,0,0,0,266,264,1,0,0,0,266,267,
+        1,0,0,0,267,270,1,0,0,0,268,266,1,0,0,0,269,261,1,0,0,0,269,270,
+        1,0,0,0,270,271,1,0,0,0,271,272,5,23,0,0,272,273,5,25,0,0,273,53,
+        1,0,0,0,274,277,3,14,7,0,275,277,3,16,8,0,276,274,1,0,0,0,276,275,
+        1,0,0,0,277,55,1,0,0,0,278,279,3,12,6,0,279,280,5,28,0,0,280,281,
+        5,22,0,0,281,282,3,68,34,0,282,283,5,23,0,0,283,284,5,1,0,0,284,
+        285,3,60,30,0,285,286,3,38,19,0,286,287,5,2,0,0,287,288,5,25,0,0,
+        288,289,6,28,-1,0,289,290,6,28,-1,0,290,57,1,0,0,0,291,298,3,40,
+        20,0,292,298,3,48,24,0,293,298,3,44,22,0,294,298,3,46,23,0,295,298,
+        3,50,25,0,296,298,3,52,26,0,297,291,1,0,0,0,297,292,1,0,0,0,297,
+        293,1,0,0,0,297,294,1,0,0,0,297,295,1,0,0,0,297,296,1,0,0,0,298,
+        59,1,0,0,0,299,301,3,62,31,0,300,299,1,0,0,0,301,304,1,0,0,0,302,
+        300,1,0,0,0,302,303,1,0,0,0,303,61,1,0,0,0,304,302,1,0,0,0,305,306,
+        3,54,27,0,306,307,3,64,32,0,307,308,5,25,0,0,308,309,6,31,-1,0,309,
+        63,1,0,0,0,310,311,5,28,0,0,311,312,3,66,33,0,312,65,1,0,0,0,313,
+        314,5,26,0,0,314,316,3,64,32,0,315,313,1,0,0,0,316,319,1,0,0,0,317,
+        315,1,0,0,0,317,318,1,0,0,0,318,67,1,0,0,0,319,317,1,0,0,0,320,325,
+        3,70,35,0,321,322,5,26,0,0,322,324,3,70,35,0,323,321,1,0,0,0,324,
+        327,1,0,0,0,325,323,1,0,0,0,325,326,1,0,0,0,326,69,1,0,0,0,327,325,
+        1,0,0,0,328,329,5,28,0,0,329,330,5,27,0,0,330,331,3,54,27,0,331,
+        332,6,35,-1,0,332,71,1,0,0,0,22,79,85,128,137,144,155,162,166,180,
+        186,209,236,244,249,253,266,269,276,297,302,317,325
     ]
 
 class gramaticaParser ( Parser ):
@@ -1506,6 +1506,7 @@ class gramaticaParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self._assign = None # AssignContext
 
         def for_(self):
             return self.getTypedRuleContext(gramaticaParser.ForContext,0)
@@ -1551,20 +1552,20 @@ class gramaticaParser ( Parser ):
             self.state = 223
             self.match(gramaticaParser.T__21)
             self.state = 224
-            self.assign()
-            self.state = 225
-            self.match(gramaticaParser.T__24)
+            localctx._assign = self.assign()
+            symbol_table.forSt((None if localctx._assign is None else self._input.getText(localctx._assign.start,localctx._assign.stop)))
             self.state = 226
             self.expression()
-            symbol_table.ifSt()
+            symbol_table.for_condition()
             self.state = 228
             self.match(gramaticaParser.T__24)
             self.state = 229
-            self.assign()
+            localctx._assign = self.assign()
             self.state = 230
             self.match(gramaticaParser.T__22)
             self.state = 231
             self.body()
+            symbol_table.end_for()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1624,65 +1625,65 @@ class gramaticaParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 235
+            self.state = 236
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [16]:
-                self.state = 233
+                self.state = 234
                 self.write()
                 pass
             elif token in [4]:
-                self.state = 234
+                self.state = 235
                 self.writeln()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 237
+            self.state = 238
             self.match(gramaticaParser.T__21)
-            self.state = 243
+            self.state = 244
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [17, 18, 22, 28, 30, 31]:
-                self.state = 238
+                self.state = 239
                 self.expression()
                 symbol_table.print_function()
                 pass
             elif token in [29]:
-                self.state = 241
+                self.state = 242
                 localctx._CTE_STRING = self.match(gramaticaParser.CTE_STRING)
                 symbol_table.push_factor((None if localctx._CTE_STRING is None else localctx._CTE_STRING.text), "string", True); symbol_table.print_function()
                 pass
             else:
                 raise NoViableAltException(self)
 
-            self.state = 252
+            self.state = 253
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==26:
-                self.state = 245
+                self.state = 246
                 self.match(gramaticaParser.T__25)
-                self.state = 248
+                self.state = 249
                 self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [17, 18, 22, 28, 30, 31]:
-                    self.state = 246
+                    self.state = 247
                     self.expression()
                     pass
                 elif token in [29]:
-                    self.state = 247
+                    self.state = 248
                     localctx._CTE_STRING = self.match(gramaticaParser.CTE_STRING)
                     pass
                 else:
                     raise NoViableAltException(self)
 
-                self.state = 254
+                self.state = 255
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 255
-            self.match(gramaticaParser.T__22)
             self.state = 256
+            self.match(gramaticaParser.T__22)
+            self.state = 257
             self.match(gramaticaParser.T__24)
         except RecognitionException as re:
             localctx.exception = re
@@ -1731,33 +1732,33 @@ class gramaticaParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 258
-            self.match(gramaticaParser.Id)
             self.state = 259
+            self.match(gramaticaParser.Id)
+            self.state = 260
             self.match(gramaticaParser.T__21)
-            self.state = 268
+            self.state = 269
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 3494248448) != 0):
-                self.state = 260
+                self.state = 261
                 self.expression()
-                self.state = 265
+                self.state = 266
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==26:
-                    self.state = 261
-                    self.match(gramaticaParser.T__25)
                     self.state = 262
+                    self.match(gramaticaParser.T__25)
+                    self.state = 263
                     self.expression()
-                    self.state = 267
+                    self.state = 268
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
 
 
-            self.state = 270
-            self.match(gramaticaParser.T__22)
             self.state = 271
+            self.match(gramaticaParser.T__22)
+            self.state = 272
             self.match(gramaticaParser.T__24)
         except RecognitionException as re:
             localctx.exception = re
@@ -1802,17 +1803,17 @@ class gramaticaParser ( Parser ):
         localctx = gramaticaParser.TypeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_type)
         try:
-            self.state = 275
+            self.state = 276
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [9]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 273
+                self.state = 274
                 self.int_()
                 pass
             elif token in [10]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 274
+                self.state = 275
                 self.float_()
                 pass
             else:
@@ -1876,25 +1877,25 @@ class gramaticaParser ( Parser ):
         self.enterRule(localctx, 56, self.RULE_function)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 277
-            self.void()
             self.state = 278
-            localctx._Id = self.match(gramaticaParser.Id)
+            self.void()
             self.state = 279
-            self.match(gramaticaParser.T__21)
+            localctx._Id = self.match(gramaticaParser.Id)
             self.state = 280
-            localctx._parameters = self.parameters()
+            self.match(gramaticaParser.T__21)
             self.state = 281
-            self.match(gramaticaParser.T__22)
+            localctx._parameters = self.parameters()
             self.state = 282
-            self.match(gramaticaParser.T__0)
+            self.match(gramaticaParser.T__22)
             self.state = 283
-            localctx._variables = self.variables()
+            self.match(gramaticaParser.T__0)
             self.state = 284
-            self.body()
+            localctx._variables = self.variables()
             self.state = 285
-            self.match(gramaticaParser.T__1)
+            self.body()
             self.state = 286
+            self.match(gramaticaParser.T__1)
+            self.state = 287
             self.match(gramaticaParser.T__24)
             symbol_table.add_func((None if localctx._Id is None else localctx._Id.text), (None if localctx._parameters is None else self._input.getText(localctx._parameters.start,localctx._parameters.stop)), (None if localctx._variables is None else self._input.getText(localctx._variables.start,localctx._variables.stop)), current_scope)
             symbol_table.pop_func((None if localctx._Id is None else localctx._Id.text))
@@ -1957,42 +1958,42 @@ class gramaticaParser ( Parser ):
         localctx = gramaticaParser.StatementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 58, self.RULE_statement)
         try:
-            self.state = 296
+            self.state = 297
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 290
+                self.state = 291
                 self.assign()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 291
+                self.state = 292
                 self.forSt()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 292
+                self.state = 293
                 self.condition()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 293
+                self.state = 294
                 self.cycle()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 294
+                self.state = 295
                 self.print_()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 295
+                self.state = 296
                 self.functionCall()
                 pass
 
@@ -2041,13 +2042,13 @@ class gramaticaParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 301
+            self.state = 302
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==9 or _la==10:
-                self.state = 298
+                self.state = 299
                 self.listvars()
-                self.state = 303
+                self.state = 304
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -2097,11 +2098,11 @@ class gramaticaParser ( Parser ):
         self.enterRule(localctx, 62, self.RULE_listvars)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 304
-            localctx._type = self.type_()
             self.state = 305
-            localctx._listaId = self.listaId()
+            localctx._type = self.type_()
             self.state = 306
+            localctx._listaId = self.listaId()
+            self.state = 307
             self.match(gramaticaParser.T__24)
             symbol_table.add_symbol((None if localctx._listaId is None else self._input.getText(localctx._listaId.start,localctx._listaId.stop)), (None if localctx._type is None else self._input.getText(localctx._type.start,localctx._type.stop)), current_scope)
         except RecognitionException as re:
@@ -2147,9 +2148,9 @@ class gramaticaParser ( Parser ):
         self.enterRule(localctx, 64, self.RULE_listaId)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 309
-            self.match(gramaticaParser.Id)
             self.state = 310
+            self.match(gramaticaParser.Id)
+            self.state = 311
             self.idExtra()
         except RecognitionException as re:
             localctx.exception = re
@@ -2194,16 +2195,16 @@ class gramaticaParser ( Parser ):
         self.enterRule(localctx, 66, self.RULE_idExtra)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 316
+            self.state = 317
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,20,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 312
-                    self.match(gramaticaParser.T__25)
                     self.state = 313
+                    self.match(gramaticaParser.T__25)
+                    self.state = 314
                     self.listaId() 
-                self.state = 318
+                self.state = 319
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,20,self._ctx)
 
@@ -2251,17 +2252,17 @@ class gramaticaParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 319
+            self.state = 320
             self.parameter()
-            self.state = 324
+            self.state = 325
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==26:
-                self.state = 320
-                self.match(gramaticaParser.T__25)
                 self.state = 321
+                self.match(gramaticaParser.T__25)
+                self.state = 322
                 self.parameter()
-                self.state = 326
+                self.state = 327
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -2310,11 +2311,11 @@ class gramaticaParser ( Parser ):
         self.enterRule(localctx, 70, self.RULE_parameter)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 327
-            localctx._Id = self.match(gramaticaParser.Id)
             self.state = 328
-            self.match(gramaticaParser.T__26)
+            localctx._Id = self.match(gramaticaParser.Id)
             self.state = 329
+            self.match(gramaticaParser.T__26)
+            self.state = 330
             localctx._type = self.type_()
             symbol_table.add_symbol((None if localctx._Id is None else localctx._Id.text), (None if localctx._type is None else self._input.getText(localctx._type.start,localctx._type.stop)), current_scope)
         except RecognitionException as re:
