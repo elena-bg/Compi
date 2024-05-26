@@ -1,18 +1,21 @@
 program main{
-	int a,b,x,y,i;
+
+	int a,b,x,y,i,z,j;
 	
-	write("prueba if");
+	writeln("prueba if");
 
 	a = 5;
 	b =  a + 3;
 	x = b +5;
 	y = x + a;
+	z = 1;		
 
-	if( a>b)
+	if( a<=b)
 	{
 		i = a*5+(b+4);
 		writeln("caso true");
-		writeln(a*1.5);
+		writeln(a);
+		
 	}else
 	{
 		if(y<x)
@@ -25,6 +28,5 @@ program main{
 			writeln("ultimo caso");
 		}
 	}
+
 	writeln(i);
-	
-}
