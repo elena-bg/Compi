@@ -6,7 +6,7 @@ program main{
 
 	a = 5;
 	b =  a + 3;
-	x = b +5;
+	x = b + 5;
 	y = x + a;
 	z = 1;		
 

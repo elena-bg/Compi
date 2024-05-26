@@ -92,7 +92,9 @@ class SymbolTable:
             else:
                 print("Does not exist \n")
                
-    
+    def add_temporal(self, nombre, tipo, scope, memoria):
+        newId = nombre + str(memoria)
+        self.symbols[newId] = {'tipo': tipo, 'scope': scope, 'memoria' : memoria, 'valor' : 0}
 
     def push_sumas(self):
         if len(self.operador) > 0:
@@ -110,12 +112,15 @@ class SymbolTable:
                     if typo == "int": 
                         resultado = self.tint
                         self.tint += 1
+                        self.add_temporal('ti', 'int', 0, resultado)
                     elif typo == "float": 
                         resultado = self.tflo
                         self.tflo += 1
+                        self.add_temporal('tf', 'float', 0, resultado)
                     elif typo == "bool": 
                         resultado = self.tflo
                         self.tflo += 1
+                        self.add_temporal('tb', 'bool', 0, resultado)
                 quad = (operator, left_op, right_op, resultado)
                 self.cuadruplo.append(quad)
                 self.cont += 1
@@ -142,12 +147,15 @@ class SymbolTable:
                     if typo == "int": 
                         resultado = self.tint
                         self.tint += 1
+                        self.add_temporal('ti', 'int', 0, resultado)
                     elif typo == "float": 
                         resultado = self.tflo
                         self.tflo += 1
+                        self.add_temporal('tf', 'float', 0, resultado)
                     elif typo == "bool": 
                         resultado = self.tbool
                         self.tbool += 1
+                        self.add_temporal('tb', 'bool', 0, resultado)
                 quad = (operator, left_op, right_op, resultado)
                 self.cuadruplo.append(quad)
                 self.cont += 1
@@ -155,10 +163,6 @@ class SymbolTable:
                 self.tipos.append(typo)
                 for i in range (len(self.cuadruplo)): 
                     print(self.cuadruplo[i], "\n")
-                
-    def add_temporal(self, nombre, tipo, scope, memoria):
-        newId = nombre + str(memoria)
-        self.symbols[newId] = {'tipo': tipo, 'scope': scope, 'memoria' : memoria, 'valor' : 0}
             
     def push_mayor_menor(self):
         if len(self.operador) > 0:
@@ -176,9 +180,11 @@ class SymbolTable:
                     if typo == "int": 
                         resultado = self.tint
                         self.tint += 1
+                        self.add_temporal('ti', 'int', 0, resultado)
                     elif typo == "float": 
                         resultado = self.tflo
                         self.tflo += 1
+                        self.add_temporal('tf', 'float', 0, resultado)
                     elif typo == "bool": 
                         resultado = self.tbool
                         self.add_temporal('tb', 'bool', 0, resultado)
@@ -488,10 +494,6 @@ class SymbolTable:
         print("DELUSSION: ", len(self.cuadruplo))
         while quad < len(self.cuadruplo):
             oper1 = self.cuadruplo[quad][1]
-            print("VIRTUAL MACHINEEEE: ", oper1)
-            print("Constants: ", self.constantes)
-            print("QUADSSSSS: ", self.cuadruplo)
-            print("rolis: ", quad)
             oper2 = self.cuadruplo[quad][2]
             result = self.cuadruplo[quad][3]
 
@@ -525,6 +527,7 @@ class SymbolTable:
 
             #operator is +
             elif self.cuadruplo[quad][0] == 1:
+                print("oper1: ", oper1, " oper2: ", oper2)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -598,7 +601,7 @@ class SymbolTable:
                 if constant_key:
                     str_constant_key = constant_key[0]
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) < int(
-                        self.constants[str_constant_key]["id"])
+                        self.constantes[str_constant_key]["id"])
 
                 elif oper2_key:
                     str_oper2_key = oper2_key[0]
@@ -623,7 +626,7 @@ class SymbolTable:
                 elif oper2_key:
                     str_oper2_key = oper2_key[0]
 
-                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) > int(str_oper2_key)
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) > int(self.symbols[str_oper2_key]["valor"])
 
             # operator is >=
             elif self.cuadruplo[quad][0] == 12:
@@ -642,7 +645,7 @@ class SymbolTable:
                 elif oper2_key:
                     str_oper2_key = oper2_key[0]
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
-                        str_oper2_key)
+                        self.symbols[str_oper2_key]["valor"])
 
             # operator is <=
             elif self.cuadruplo[quad][0] == 11:
@@ -660,7 +663,7 @@ class SymbolTable:
                 elif oper2_key:
                     str_oper2_key = oper2_key[0]
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) <= int(
-                        str_oper2_key)
+                        self.symbols[str_oper2_key]["valor"])
 
             # operator is %
             elif self.cuadruplo[quad][0] == 3:
