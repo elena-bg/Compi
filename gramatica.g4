@@ -8,7 +8,7 @@ vacia = []
 }
 
 // Regla principal que define el programa completo
-programRule : program main '{' variables (function)* statement* '}' EOF {symbol_table.maquina()}; //{symbol_table.maquina()}
+programRule : program Id ';' (function)* main '{' variables statement* '}' EOF {symbol_table.maquina(symbol_table.cuadruplo)}; //{symbol_table.maquina()}
 
 // Definición de las palabras clave y tokens básicos
 program : 'program';
@@ -39,7 +39,7 @@ exp: term {symbol_table.push_sumas()}
 term: factor {symbol_table.push_multi()} 
       (('*' {symbol_table.push_operador('*')} | '/' {symbol_table.push_operador('/')} | '%' {symbol_table.push_operador('%')}) factor {symbol_table.push_multi()})*;
 
-factor: ('+'| '-')? (Id {symbol_table.push_factor($Id.text, None, False)} 
+factor: ('+'| '-')? (Id {symbol_table.push_factor($Id.text, None, False)}
        | CTE_INT {symbol_table.push_factor($CTE_INT.text, 'int', True)} 
        | CTE_FLOAT {symbol_table.push_factor($CTE_FLOAT.text, 'float', True)} 
        | '(' expression ')');
@@ -52,16 +52,21 @@ initialization: assign;
 condition: if '('  expression ')' {symbol_table.ifSt()} body (else {symbol_table.elseSt()} body)? {symbol_table.endIf()};
 cycle: while {symbol_table.whileSt()} '(' expression ')' {symbol_table.whileIf()} body {symbol_table.end_while()};
 forSt: for '(' assign ';' expression {symbol_table.ifSt()}';' assign ')' body;
+<<<<<<< Updated upstream
 print : (write | writeln) '(' (expression {symbol_table.print_function()} 
     | CTE_STRING {symbol_table.push_factor($CTE_STRING.text, 'string', True)}) 
     (',' (expression {symbol_table.print_function()} 
     | CTE_STRING {symbol_table.push_factor($CTE_STRING.text, 'string', True)}))* ')' ';' 
     {symbol_table.print_function()};
 functionCall: Id '(' (expression (',' expression)*)? ')' ';';
+=======
+print : (write | writeln) '(' (expression {symbol_table.print_function()} | CTE_STRING {symbol_table.push_factor($CTE_STRING.text, "string", True); symbol_table.print_function()}) (',' (expression | CTE_STRING))* ')' ';';
+functionCall: Id '(' (expression (',' expression)*)? ')' ';' {symbol_table.fCall($Id.text)};
+>>>>>>> Stashed changes
 type: int | float;
 
 // Definición de funciones y variables
-function: void Id '(' parameters ')' '{' variables body '}' ';' {symbol_table.add_func($Id.text, $parameters.text, $variables.text, current_scope)} {symbol_table.pop_func($Id.text)};
+function: void Id '(' parameters ')' '{' variables statement* '}' {symbol_table.add_func($Id.text, $parameters.text, $variables.text, current_scope)} {symbol_table.getQuads($Id.text)}{symbol_table.pop_func($Id.text)};
 statement: assign | forSt | condition | cycle | print | functionCall;
 variables: listvars*;
 listvars: type listaId ';' {symbol_table.add_symbol($listaId.text, $type.text, current_scope)};

@@ -1,0 +1,16 @@
+program duck;
+
+void test (test3:float, test2:int){
+    int i,j,k;
+    i = 1;
+    j = 35;
+    k = 10;
+
+    writeln("prueba funcion");
+}
+
+main{
+    int m;
+    m = 5;
+    test(0.5, 4);
+}

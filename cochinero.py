@@ -40,6 +40,7 @@ class SymbolTable:
         self.cubito = cubo()
         self.cont = 0
         self.temporals = []
+        self.tempQuads = {}
         
     def ooop(self, value):
         for key, val in self.op_dict.items():
@@ -467,11 +468,30 @@ class SymbolTable:
         self.pop_symbols(self.functions[nombre]['params'], self.functions[nombre]['vars'])
         del self.functions[nombre]
         
-  
+
+    def getQuads(self, nombreFuncion):
+        temporal = []
+        print("GET QUADS: ", self.cuadruplo)
+        temporal = self.cuadruplo
+        self.tempQuads[nombreFuncion] = temporal
+        print("tempQuads: ", self.tempQuads)
+        del self.cuadruplo[:]
+        print("SelfCuadruplo: " , self.cuadruplo)
+
+    def fCall(self, nombreFuncion):
+        print("ENTER FUNCTION", self.tempQuads)
+        print("WEIRD: ", self.cuadruplo)
+        list_of_tuples = []
+        for nombre, info in self.tempQuads.items():
+            if nombreFuncion == nombre:
+                list_of_tuples = info
+                print("INFOOO: ", list_of_tuples)
+                self.maquina(info)
 
 
-    def maquina(self): 
+    def maquina(self, optCuad):
         quad = 0
+<<<<<<< Updated upstream
 
         while quad < len(self.cuadruplo):
             oper1 = self.cuadruplo[quad][1]
@@ -479,13 +499,24 @@ class SymbolTable:
             #print("Constants: ", self.constants)
             oper2 = self.cuadruplo[quad][2]
             result = self.cuadruplo[quad][3]
+=======
+        print("DELUSSION: ", len(optCuad))
+        while quad < len(optCuad):
+            oper1 = optCuad[quad][1]
+            print("VIRTUAL MACHINEEEE: ", oper1)
+            print("Constants: ", self.constantes)
+            print("QUADSSSSS: ", optCuad)
+            print("rolis: ", quad)
+            oper2 = optCuad[quad][2]
+            result = optCuad[quad][3]
+>>>>>>> Stashed changes
 
             constant_key = [key for key, value in self.constantes.items() if key == oper1]
 
             oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
 
             #operador =
-            if self.cuadruplo[quad][0] == 15:
+            if optCuad[quad][0] == 15:
                 constant_key = [key for key, value in self.constantes.items() if key == oper1]
                 print("ck", constant_key)
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -509,7 +540,7 @@ class SymbolTable:
 
 
             #operator is +
-            elif self.cuadruplo[quad][0] == 1:
+            elif optCuad[quad][0] == 1:
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -525,7 +556,7 @@ class SymbolTable:
                     self.temporals.append(int(self.symbols[str_oper1_key]["valor"]) + int(self.symbols[str_oper2_key]["valor"]))
 
                 #operador -
-            elif self.cuadruplo[quad][0] == 2:
+            elif optCuad[quad][0] == 2:
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -541,7 +572,7 @@ class SymbolTable:
                     self.temporals.append(int(self.symbols[str_oper1_key]["valor"]) - int(self.symbols[str_oper2_key]["valor"]))
 
             #operator is *
-            elif self.cuadruplo[quad][0] == 3:
+            elif optCuad[quad][0] == 3:
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -557,7 +588,7 @@ class SymbolTable:
                     self.temporals.append(int(self.symbols[str_oper1_key]["valor"]) * int(self.symbols[str_oper2_key]["valor"]))
 
             #operator is /
-            elif self.cuadruplo[quad][0] == 4:
+            elif optCuad[quad][0] == 4:
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -573,7 +604,7 @@ class SymbolTable:
                     self.temporals.append(int(self.symbols[str_oper1_key]["valor"]) / int(self.symbols[str_oper2_key]["valor"]))
 
             # operator is <
-            elif self.cuadruplo[quad][0] == 5:
+            elif optCuad[quad][0] == 5:
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('meoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -583,7 +614,7 @@ class SymbolTable:
                 if constant_key:
                     str_constant_key = constant_key[0]
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) < int(
-                        self.constants[str_constant_key]["id"])
+                        self.constantes[str_constant_key]["id"])
 
                 elif oper2_key:
                     str_oper2_key = oper2_key[0]
@@ -591,7 +622,7 @@ class SymbolTable:
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) < int(self.symbols[str_oper2_key]["valor"])
 
             #operator is >
-            elif self.cuadruplo[quad][0] == 6:
+            elif optCuad[quad][0] == 6:
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -610,7 +641,66 @@ class SymbolTable:
 
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) > int(str_oper2_key)
 
+<<<<<<< Updated upstream
             elif self.cuadruplo[quad][0] == "print":
+=======
+            # operator is >=
+            elif optCuad[quad][0] == 12:
+                constant_key = [key for key, value in self.constantes.items() if key == oper2]
+                oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
+                oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
+                str_oper1_key = oper1_key[0]
+                result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
+                str_result_key = result_key[0]
+
+                if constant_key:
+                    str_constant_key = constant_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
+                        self.constantes[str_constant_key]["id"])
+
+                elif oper2_key:
+                    str_oper2_key = oper2_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) >= int(
+                        str_oper2_key)
+
+            # operator is <=
+            elif optCuad[quad][0] == 11:
+                constant_key = [key for key, value in self.constantes.items() if key == oper2]
+                oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
+                oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
+                str_oper1_key = oper1_key[0]
+                result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
+                str_result_key = result_key[0]
+                if constant_key:
+                    str_constant_key = constant_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) <= int(
+                        self.constantes[str_constant_key]["id"])
+
+                elif oper2_key:
+                    str_oper2_key = oper2_key[0]
+                    self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) <= int(
+                        str_oper2_key)
+
+            # operator is %
+            elif optCuad[quad][0] == 3:
+                constant_key = [key for key, value in self.constantes.items() if key == oper2]
+                oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
+                oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
+                str_oper1_key = oper1_key[0]
+
+                if constant_key:
+                    str_constant_key = constant_key[0]
+                    self.temporals.append(
+                        int(self.symbols[str_oper1_key]["valor"]) % int(self.constantes[str_constant_key]["id"]))
+
+
+                elif oper2_key:
+                    str_oper2_key = oper2_key[0]
+                    self.temporals.append(
+                        int(self.symbols[str_oper1_key]["valor"]) % int(self.symbols[str_oper2_key]["valor"]))
+
+            elif optCuad[quad][0] == "print":
+>>>>>>> Stashed changes
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
                 constant_key = [key for key, value in self.constantes.items() if key == result]
                 if result_key:
@@ -625,19 +715,35 @@ class SymbolTable:
                 print("VALOR FINAL: ", result)
 
 
+<<<<<<< Updated upstream
             elif self.cuadruplo[quad][0] == "GOTOF":
                 result_key = "tb" + str(self.cuadruplo[quad-1][3])
+=======
+            elif optCuad[quad][0] == "GotoF":
+                result_key = "tb" + str(optCuad[quad-1][3])
+                print("ROLIS2: ", result_key)
+>>>>>>> Stashed changes
                 resultado = self.symbols[result_key]["valor"]
                 if type(resultado) == bool:
                     if resultado == False:
-                        quad = self.cuadruplo[quad][3]
+                        quad = optCuad[quad][3]
                         continue
 
+<<<<<<< Updated upstream
             elif self.cuadruplo[quad][0] == "GOTO":
                 quad = self.cuadruplo[quad][3]
                 continue
 
 
+=======
+            elif optCuad[quad][0] == "Goto":
+                print("Rolis Quad: ", quad)
+                quad = optCuad[quad][3]
+                print("ROLIS3: ", quad)
+                continue
+
+            print("LENNN: ", len(optCuad))
+>>>>>>> Stashed changes
             quad += 1
                 
         

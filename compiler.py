@@ -8,7 +8,11 @@ from gramaticaParser import gramaticaParser
 def main():
     symbol_table = SymbolTable()
 
+<<<<<<< Updated upstream
     input_stream = FileStream("while.txt")
+=======
+    input_stream = FileStream("ultimatum.txt")
+>>>>>>> Stashed changes
     lexer = gramaticaLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = gramaticaParser(stream)

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="58eb0e24-a266-4e00-9cf1-9fb4b270b7d0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ultimatum.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cochinero.py" beforeDir="false" afterPath="$PROJECT_DIR$/cochinero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/compiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gramatica.g4" beforeDir="false" afterPath="$PROJECT_DIR$/gramatica.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gramatica.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gramatica.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gramatica.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gramatica.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gramaticaLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/gramaticaLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gramaticaLexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/gramaticaLexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gramaticaLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/gramaticaLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gramaticaParser.py" beforeDir="false" afterPath="$PROJECT_DIR$/gramaticaParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newExample.txt" beforeDir="false" afterPath="$PROJECT_DIR$/newExample.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2grpr0d6xPAhEepSYMCQ0H2kr40" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/enriq/OneDrive/Escritorio/PythonProjects/Compi",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="58eb0e24-a266-4e00-9cf1-9fb4b270b7d0" name="Changes" comment="" />
+      <created>1716465745648</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716465745648</updated>
+      <workItem from="1716465746757" duration="8885000" />
+      <workItem from="1716516212842" duration="2116000" />
+      <workItem from="1716588242578" duration="7279000" />
+      <workItem from="1716681925036" duration="942000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
