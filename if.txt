@@ -10,7 +10,7 @@ program main{
 	y = x + a;
 	z = 1;		
 
-	if(a<=b)
+	if(a<b)
 	{
 		i = a*5+(b+4);
 		writeln("caso true");
@@ -30,3 +30,4 @@ program main{
 	}
 
 	writeln(i);
+}

@@ -490,6 +490,7 @@ class SymbolTable:
 
             #operador =
             if self.cuadruplo[quad][0] == 15:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper1]
                 #print("ck: ", constant_key)
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -514,6 +515,7 @@ class SymbolTable:
 
             #operator is +
             elif self.cuadruplo[quad][0] == 1:
+                print("Rolis Quad: ", quad)
                 #print("oper1: ", oper1, " oper2: ", oper2)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
@@ -531,6 +533,7 @@ class SymbolTable:
 
                 #operador -
             elif self.cuadruplo[quad][0] == 2:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -547,6 +550,7 @@ class SymbolTable:
 
             #operator is *
             elif self.cuadruplo[quad][0] == 3:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -563,6 +567,7 @@ class SymbolTable:
 
             #operator is /
             elif self.cuadruplo[quad][0] == 4:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -579,24 +584,29 @@ class SymbolTable:
 
             # operator is <
             elif self.cuadruplo[quad][0] == 5:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('meoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
                 str_oper1_key = oper1_key[0]
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
                 str_result_key = result_key[0]
+                print(constant_key, oper2_key, oper1_key, str_oper1_key, result_key, str_result_key)
                 if constant_key:
                     str_constant_key = constant_key[0]
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) < int(
                         self.constantes[str_constant_key]["id"])
+                    print("AAAAAAH", self.symbols[str_result_key]["valor"])
 
                 elif oper2_key:
                     str_oper2_key = oper2_key[0]
 
                     self.symbols[str_result_key]["valor"] = int(self.symbols[str_oper1_key]["valor"]) < int(self.symbols[str_oper2_key]["valor"])
+                    print("AAAAAAH", self.symbols[str_result_key]["valor"])
 
             #operator is >
             elif self.cuadruplo[quad][0] == 6:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -617,6 +627,7 @@ class SymbolTable:
 
             # operator is >=
             elif self.cuadruplo[quad][0] == 12:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -640,6 +651,7 @@ class SymbolTable:
 
             # operator is <=
             elif self.cuadruplo[quad][0] == 11:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -658,6 +670,7 @@ class SymbolTable:
 
             # operator is %
             elif self.cuadruplo[quad][0] == 3:
+                print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
                 oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
@@ -675,6 +688,7 @@ class SymbolTable:
                         int(self.symbols[str_oper1_key]["valor"]) % int(self.symbols[str_oper2_key]["valor"]))
 
             elif self.cuadruplo[quad][0] == "print":
+                print("Rolis Quad: ", quad)
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
                 constant_key = [key for key, value in self.constantes.items() if key == result]
 
@@ -692,7 +706,7 @@ class SymbolTable:
 
             elif self.cuadruplo[quad][0] == "GotoF":
                 result_key = "tb" + str(self.cuadruplo[quad-1][3])
-                #print("ROLIS2: ", result_key)
+                print("ROLIS2: ", result_key)
                 resultado = self.symbols[result_key]["valor"]
                 if type(resultado) == bool:
                     if resultado == False:
