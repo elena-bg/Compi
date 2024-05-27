@@ -6,9 +6,15 @@ program main{
 	n=5;
 	j = 0;
 	x = 1;
-	for (i=1; i<n; i=i+1;){
-		writeln(i);
-		writeln("for 1");
+	for (i=1;i<n;i = i+1){
+		x = x * i;
+		writeln(x);
+		for(j=1;j<n;j=j+1){
+			m = i + j;
+			writeln(i);
+			writeln(j);
+			writeln(m);
+		}
 	}
 	
 }

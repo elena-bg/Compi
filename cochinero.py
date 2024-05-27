@@ -586,7 +586,7 @@ class SymbolTable:
             elif self.cuadruplo[quad][0] == 5:
                 print("Rolis Quad: ", quad)
                 constant_key = [key for key, value in self.constantes.items() if key == oper2]
-                oper2_key = [key for key, value in self.symbols.items() if value.get('meoria') == oper2]
+                oper2_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper2]
                 oper1_key = [key for key, value in self.symbols.items() if value.get('memoria') == oper1]
                 str_oper1_key = oper1_key[0]
                 result_key = [key for key, value in self.symbols.items() if value.get('memoria') == result]
