@@ -8,7 +8,7 @@ vacia = []
 }
 
 // Regla principal que define el programa completo
-programRule : program main '{' variables (function)* statement* '}' EOF {symbol_table.maquina()}; //{symbol_table.maquina()}
+programRule : program (function)* main '{' variables statement* '}' EOF {symbol_table.maquina()}; //{symbol_table.maquina()}
 
 // Definición de las palabras clave y tokens básicos
 program : 'program';
@@ -47,21 +47,22 @@ factor: ('+'| '-')? (Id {symbol_table.push_factor($Id.text, None, False)}
 
 // Definición de estructuras de control y asignación
 body: '{' statement* '}';
+block: statement* ;
 assign: Id '='  expression {symbol_table.assign($Id.text, '=')} ';';
 initialization: assign;
 condition: if '('  expression ')' {symbol_table.ifSt()} body (else {symbol_table.elseSt()} body)? {symbol_table.endIf()};
 cycle: while {symbol_table.whileSt()} '(' expression ')' {symbol_table.ifSt()} body {symbol_table.end_while()};
 forSt: for '(' assign {symbol_table.forSt($assign.text)} expression {symbol_table.for_condition()}';' assign ')' body {symbol_table.end_for()};
 print : (write | writeln) '(' (expression {symbol_table.print_function()} | CTE_STRING {symbol_table.push_factor($CTE_STRING.text, "string", True); symbol_table.print_function()}) (',' (expression | CTE_STRING))* ')' ';';
-functionCall: Id '(' (expression (',' expression)*)? ')' ';';
+functionCall: Id '(' {symbol_table.function_call($Id.text)} (expression (',' expression)*)? ')' ;
 type: int | float;
 
 // Definición de funciones y variables
-function: void Id '(' parameters ')' '{' variables body '}' ';' {symbol_table.add_func($Id.text, $parameters.text, $variables.text, current_scope)} {symbol_table.pop_func($Id.text)};
+function: void Id '(' parameters ')' '{' variables {symbol_table.add_func($Id.text, $parameters.text, $variables.text, current_scope)} block '}' {symbol_table.end_function()};
 statement: assign | forSt | condition | cycle | print | functionCall;
 variables: listvars*;
 listvars: type listaId ';' {symbol_table.add_symbol($listaId.text, $type.text, current_scope)};
 listaId : Id idExtra;
 idExtra : (',' listaId)*;
 parameters: parameter (',' parameter)*;
-parameter: Id ':' type {symbol_table.add_symbol($Id.text, $type.text, current_scope)};
+parameter: type Id {symbol_table.add_symbol($Id.text, $type.text, current_scope)};

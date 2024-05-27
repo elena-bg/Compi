@@ -188,6 +188,15 @@ class gramaticaListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by gramaticaParser#block.
+    def enterBlock(self, ctx:gramaticaParser.BlockContext):
+        pass
+
+    # Exit a parse tree produced by gramaticaParser#block.
+    def exitBlock(self, ctx:gramaticaParser.BlockContext):
+        pass
+
+
     # Enter a parse tree produced by gramaticaParser#assign.
     def enterAssign(self, ctx:gramaticaParser.AssignContext):
         pass

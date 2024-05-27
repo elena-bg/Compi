@@ -29,7 +29,11 @@ class SymbolTable:
             'else' : 14,
             '=' : 15,
             '%' : 16,
-            'print' : 17
+            'print' : 17,
+            'ERA': 18,
+            'PARAM': 19,
+            'GOSUB': 20,
+            'RET': 21
         }
         self.cuadruplo = []
         self.saltos = []
@@ -40,6 +44,22 @@ class SymbolTable:
         self.cubito = cubo()
         self.cont = 0
         self.temporals = []
+        self.param_count = 0  # Para llevar la cuenta de los parámetros
+        self.activation_stack = []  # Pila para los espacios de activación
+        self.pila_retorno = []  # Pila para manejar los retornos de las funciones
+        
+        
+    def reservar_espacio_activacion(self, function_name):
+        # Puedes usar un diccionario para almacenar el espacio de activación
+        print("Holis")
+        print(self.cuadruplo)
+        espacio_activacion = {
+            'vars': {},
+            'temporals': {}
+        }
+        # Añadir el espacio de activación a la pila
+        self.activation_stack.append(espacio_activacion)
+        print("ActivStack: ", self.activation_stack)
         
     def ooop(self, value):
         for key, val in self.op_dict.items():
@@ -293,39 +313,172 @@ class SymbolTable:
             self.symbols[new_name] = {"tipo": tipo, "scope": scope, "memoria": 0, "valor": 0}    # Crea un nuevo diccionario para el nuevo ámbito
             self.memory(new_name)
             #print(self.symbols)
+            
+    def function_call(self, function_name):
+        if function_name not in self.functions:
+            raise ValueError(f"Error: La función '{function_name}' no está declarada")
+
+        # Paso 1: Generar ERA (Espacio de Activación)
+        #El cuadruplo ERA reserva espacio para las variables locales y temporales de la función. 
+        quad = (18, function_name, None, None)
+        self.cuadruplo.append(quad)
+
+        # Paso 2: Pasar parámetros
+        for param in self.functions[function_name]['params']:
+            if len(self.operando) == 0:
+                raise ValueError("No hay suficientes parámetros en la pila")
+            arg = self.operando.pop()
+            quad = (self.op_dict['PARAM'], arg, None, f'param{self.param_count}')
+            self.cuadruplo.append(quad)
+            self.param_count += 1
+
+        # Paso 3: Generar GOSUB (Ir a Subrutina)
+        quad = (20, function_name, None, None)
+        self.cuadruplo.append(quad)
+
+        # Paso 4: Resetear contador de parámetros
+        self.param_count = 0
    
 
-
+    
     def add_func(self, nombre, params, vars, scope):
+        print("params: ", params)
         parametros = []
         variables = []
         if nombre in self.functions:
-            raise ValueError(f"Error: La funcionj '{nombre}' ya está declarado en el ámbito '{scope}'")
+            raise ValueError(f"Error: La función '{nombre}' ya está declarada en el ámbito '{scope}'")
+        #quad = (18, nombre, None, None)
+        #self.cuadruplo.append(quad)
         if params or vars:
             if vars:
                 new_variables = vars[3:].replace(";", ",").replace(":", ",")
+                print("new variables: ", new_variables)
                 variables_list = new_variables.split(",")
+                print("variables list: ", new_variables)
                 for var in variables_list:
                     if var in self.symbols:
                         variables.append(var)
             if params and isinstance(params, str):
                 new_parametros = params.replace(";", ",").replace(":", ",")
+                print("new parametros: ", new_variables)
                 parametros_list = new_parametros.split(",")
+                print("parametros list: ", new_variables)
                 for param in parametros_list:
                     if param in self.symbols:
                         parametros.append(param)
                         
             self.functions[nombre] = {
-                "params" : parametros,
-                "vars" : variables,
+                "params": parametros,
+                "vars": variables,
             }
-            
-            
         else:
             self.functions[nombre] = {
-                "params" : params,
-                "vars" : vars,
+                "params": [],
+                "vars": [],
             }
+    
+    """
+    def add_func(self, nombre, params, vars, scope):
+        print("params: ", params)
+        # 1. Insertar el nombre de la función en la tabla de funciones (DirFunc) y verificar semántica
+        if nombre in self.functions:
+            raise ValueError(f"Error: La función '{nombre}' ya está declarada en el ámbito '{scope}'")
+
+        # 2. Insertar cada parámetro en la tabla de variables actual (local)
+        # 3. Insertar el tipo de cada parámetro en la tabla de parámetros
+        parametros = []
+        if params:
+            param_list = params.split(',')
+            print("param_list: ", param_list)
+            for param in param_list:
+                # Verificar que el parámetro tenga el formato correcto
+                parts = param.strip().split()
+                if len(parts) != 2:
+                    raise ValueError(f"Formato de parámetro incorrecto: '{param}'")
+                tipo, nombre_param = parts
+                self.add_symbol(nombre_param, tipo, scope)
+                parametros.append((nombre_param, tipo))
+
+        # 4. Insertar en DirFunc el número de parámetros definidos
+        num_params = len(parametros)
+
+        # 5. Insertar en DirFunc el número de variables locales definidas
+        num_vars = 0
+        if vars:
+            vars_list = vars.split(',')
+            for var in vars_list:
+                tipo, nombre_var = var.split()
+                self.add_symbol(nombre_var, tipo, scope)
+                num_vars += 1
+
+        # 6. Insertar en DirFunc el contador actual de cuadruplos (CONT)
+        start_quad = len(self.cuadruplo)
+
+        # 7. Liberar la tabla de variables actual (local)
+        # Esto se haría al final de la función, en `end_function`
+
+        # Añadir la función a la tabla de funciones (DirFunc)
+        self.functions[nombre] = {
+            'params': parametros,
+            'num_params': num_params,
+            'num_vars': num_vars,
+            'start_quad': start_quad,
+            'end_quad': None,
+            'num_temp': 0  # Inicialmente 0, se actualizará en end_function
+        }
+    """
+        
+        
+            
+    # Método para finalizar la definición de una función
+    def end_function(self):
+        # Generar el cuadruplo RET para indicar el retorno de la función
+        quad = (self.op_dict['RET'], None, None, None)
+        self.cuadruplo.append(quad)
+
+        # Actualizar el número de temporales utilizados en la función
+        num_temp = self.tint - 5000  # Suponiendo que los temporales empiezan en 5000
+        current_function = list(self.functions.keys())[-1]
+        self.functions[current_function]['num_temp'] = num_temp
+        self.functions[current_function]['end_quad'] = len(self.cuadruplo)
+
+        # Liberar la tabla de variables actual (local)
+        self.symbols = {k: v for k, v in self.symbols.items() if v['scope'] != current_function}
+        
+    def function_call(self, function_name):
+        # 1. Verificar que la función existe en la tabla de funciones (DirFunc)
+        if function_name not in self.functions:
+            raise ValueError(f"Error: La función '{function_name}' no está declarada")
+
+        # 2. Generar acción ERA (Expansión de Registro de Activación)
+        quad = (self.op_dict['ERA'], function_name, None, None)
+        self.cuadruplo.append(quad)
+        
+        # Iniciar el contador de parámetros (k) en 1
+        k = 1
+        param_types = [param[1] for param in self.functions[function_name]['params']]
+
+        # 3. Argumento = PilaO.Pop(), TipoArgumento = PTypes.Pop()
+        for param_type in param_types:
+            if function_name not in self.functions:
+                raise ValueError(f"Error: La función '{function_name}' no está declarada")
+
+        quad = (self.op_dict['ERA'], function_name, None, None)
+        self.cuadruplo.append(quad)
+
+        for param in self.functions[function_name]['params']:
+            if len(self.operando) == 0:
+                raise ValueError("No hay suficientes parámetros en la pila")
+            arg = self.operando.pop()
+            quad = (self.op_dict['PARAM'], arg, None, f'param{self.param_count}')
+            self.cuadruplo.append(quad)
+            self.param_count += 1
+
+        quad = (self.op_dict['GOSUB'], function_name, None, None)
+        self.cuadruplo.append(quad)
+
+        self.param_count = 0
+
     
     def fill(self, index, value):
         op, left, right, _ = self.cuadruplo[index]
@@ -473,7 +626,27 @@ class SymbolTable:
         self.pop_symbols(self.functions[nombre]['params'], self.functions[nombre]['vars'])
         del self.functions[nombre]
         
-  
+    def pasar_parametro(self, arg, param_name):
+        print("pasar params")
+        if not self.activation_stack:
+            raise ValueError("No hay espacio de activación disponible para pasar parámetros")
+
+        # Obtener el espacio de activación actual
+        espacio_activacion = self.activation_stack[-1]
+        # Almacenar el parámetro en el espacio de activación
+        espacio_activacion['vars'][param_name] = arg
+        
+    def buscar_funcion(self, nombre):
+        print("loop", self.cuadruplo)
+        for i in range(len(self.cuadruplo)):
+            print("test loop")
+            if self.cuadruplo[i][0] == 18 and self.cuadruplo[i][1] == nombre:
+                print("cuad i0: ", self.cuadruplo[i][0])
+                print("cuad i1: ", self.cuadruplo[i][1])
+                print("i + 1: ", i + 1)
+                return i + 1
+        raise ValueError(f"Función {nombre} no encontrada")
+    
 
 
     def maquina(self): 
@@ -703,6 +876,29 @@ class SymbolTable:
 
                 print(result) #VALOR FINAL
 
+            elif self.cuadruplo[quad][0] == self.op_dict['ERA']:
+                print(f"ERA: Reservar espacio para la función {oper1}")
+                self.reservar_espacio_activacion(oper1)
+
+            elif self.cuadruplo[quad][0] == self.op_dict['PARAM']:
+                print(f"PARAM: Pasar parámetro {oper1} como {result}")
+                self.pasar_parametro(oper1, result)
+
+            elif self.cuadruplo[quad][0] == self.op_dict['GOSUB']:
+                self.pila_retorno.append(quad + 1)
+                print(f"GOSUB: Saltar a la función {oper1}, dirección de retorno {quad + 1}")
+                quad = self.buscar_funcion(oper1)
+                print(f"GOSUB: Nueva dirección {quad}")
+                continue
+
+            elif self.cuadruplo[quad][0] == self.op_dict['RET']:
+                if self.pila_retorno:
+                    quad = self.pila_retorno.pop()
+                    self.activation_stack.pop()  # Eliminar el espacio de activación actual
+                    print(f"RET: Retornar a la dirección {quad}")
+                    continue
+                else:
+                    raise ValueError("Error: Pila de retorno vacía al intentar retornar de una función")
 
             elif self.cuadruplo[quad][0] == "GotoF":
                 result_key = "tb" + str(self.cuadruplo[quad-1][3])

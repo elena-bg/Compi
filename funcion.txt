@@ -1,0 +1,12 @@
+program 
+void myFunction(int y) {
+    int z;
+    z = 1;
+    writeln(z);
+    }
+main {
+    int x;
+    x = 5;
+    myFunction(x)
+}
+
